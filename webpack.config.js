@@ -8,10 +8,11 @@ module.exports = {
         path: path.join(__dirname, 'public'),
         filename: 'bundle.js'
     },
+    mode: 'development',
     module: {
         rules: [{
             loader: 'babel-loader',
-            test: /\.js$/,
+            test: /\.jsx?$/,
             exclude: /node_modules/
         },{
             test: /\.s?css$/,
@@ -21,6 +22,9 @@ module.exports = {
                 'sass-loader'
             ]
         }]
+    },
+    resolve: {
+        extensions: [".js", ".json", ".jsx"]
     },
     devtool: 'cheap-module-eval-source-map',
     devServer: {

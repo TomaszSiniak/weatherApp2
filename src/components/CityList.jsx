@@ -1,58 +1,53 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Header from './Header';
-import AddCityForm from'./AddCityForm';
+import AddCityForm from './AddCityForm';
 import CityWeather from './CityWeather';
-import {getCityData, subscribe} from '../utils/js/storage';
+import { getCityData, subscribe } from '../utils/js/storage';
 
 
-class CityList extends React.Component{
-    constructor(props){
-        super(props);
-        
-        this.state = {
-            cities:[],
-            error: undefined
-       }
-    }
-    componentDidMount(){
-        subscribe(() => {
-            const cities = getCityData();
-            this.setState({
-               cities,
-            });
-        });
+class CityList extends React.Component {
+  constructor(props) {
+    super(props);
 
-        const cities = getCityData();
-        this.setState({
-            cities,
-        });
-    
-    }
-  
+    this.state = {
+      cities: [],
+      error: undefined,
+    };
+  }
+  componentDidMount() {
+    subscribe(() => {
+      const cities = getCityData();
+      this.setState({
+        cities,
+      });
+    });
 
-    render(){
-        return (
-            <div>
-                <Header />
-                {this.state.error && <p className="err-msg">{this.state.error}</p>}
-                <AddCityForm/>
-                <div>
-                    {this.state.cities.map ( (city) => {
-                        return <CityWeather city={city} />})}
-                </div>
-            </div>
-        )
-    }
+    const cities = getCityData();
+    this.setState({
+      cities,
+    });
+  }
+
+
+  render() {
+    return (
+      <div>
+        <Header />
+        {this.state.error && <p className="err-msg">{this.state.error}</p>}
+        <AddCityForm />
+        <div>
+          {this.state.cities.map((city) => {
+            return <CityWeather key={city.id} city={city} />
+          })}
+        </div>
+      </div>
+    );
+  }
 }
 
 export default CityList;
 
-
-
-
-
-
+/* eslint-disable */
 
   // getUpdateWeather = (cityname) => {
     //     getWeath(cityname).then((res) => {
@@ -66,7 +61,7 @@ export default CityList;
     //                     return false;
     //                 }
     //             });
-                    
+
     //             newCities[index] = {
     //                 id: this.state.cities[index].id,
     //                 name: res.name,
