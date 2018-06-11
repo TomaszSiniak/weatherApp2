@@ -8,13 +8,12 @@ const CityWeather = (props) => {
       <p>City: {props.city.name}</p>
       <p>Temp: {props.city.temp}</p>
       <p>Wind speed: {props.city.wind}</p>
-      <button onClick={() => removeCity(props.city.name)}>Remove</button>
+      <button onClick={() => removeCity(props.city.id)}>Remove</button>
       <button onClick={() => updateCityData(props.city.id)}>
         <i className="fa fa-spinner fa-spin" />
       </button>
     </div>
   );
 };
-
 
 export default CityWeather;

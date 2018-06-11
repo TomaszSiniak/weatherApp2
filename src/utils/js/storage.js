@@ -53,13 +53,17 @@ export const getCityData = () => {
   return cityData;
 }
 
-export const removeCity = (cityToRemove) => {
+export const removeCity = (cityIdToRemove) => {
   const myData = myCities.filter((city) => {
-    return cityToRemove !== city.id
+    return city.id !== cityIdToRemove
   })
-  console.log('remove');
   myCities = myData;
+ 
+  setLocalForage();
+  publish();
 }
+
+
 
 export const updateCityData = (id) => {
 

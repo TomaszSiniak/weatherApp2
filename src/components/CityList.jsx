@@ -4,7 +4,6 @@ import AddCityForm from './AddCityForm';
 import CityWeather from './CityWeather';
 import { getCityData, subscribe } from '../utils/js/storage';
 
-
 class CityList extends React.Component {
   constructor(props) {
     super(props);
@@ -27,7 +26,6 @@ class CityList extends React.Component {
       cities,
     });
   }
-
 
   render() {
     return (
